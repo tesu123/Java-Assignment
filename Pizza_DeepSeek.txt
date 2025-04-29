@@ -1,0 +1,63 @@
+// using variable arguments
+
+import java.util.Scanner;
+
+public class PizzaOrderVarArgs {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Welcome to Pizza Ordering System!");
+        System.out.print("Enter pizza size (Small/Medium/Large): ");
+        String size = scanner.nextLine();
+        
+        System.out.print("Enter number of toppings: ");
+        int numToppings = scanner.nextInt();
+        scanner.nextLine(); // consume newline
+        
+        String[] toppings = new String[numToppings];
+        for (int i = 0; i < numToppings; i++) {
+            System.out.print("Enter topping " + (i+1) + ": ");
+            toppings[i] = scanner.nextLine();
+        }
+        
+        orderPizza(size, toppings);
+    }
+    
+    public static void orderPizza(String size, String... toppings) {
+        System.out.println("\nYour Pizza Order:");
+        System.out.println("Size: " + size);
+        System.out.println("Toppings:");
+        for (String topping : toppings) {
+            System.out.println("- " + topping);
+        }
+        System.out.println("Order placed successfully!");
+    }
+}
+
+// Using Command Line Arguments
+
+public class PizzaOrderCmdArgs {
+    public static void main(String[] args) {
+        if (args.length < 2) {
+            System.out.println("Usage: java PizzaOrderCmdArgs <size> <topping1> <topping2> ...");
+            System.out.println("Example: java PizzaOrderCmdArgs Medium Cheese Pepperoni Mushrooms");
+            return;
+        }
+        
+        String size = args[0];
+        String[] toppings = new String[args.length - 1];
+        System.arraycopy(args, 1, toppings, 0, args.length - 1);
+        
+        orderPizza(size, toppings);
+    }
+    
+    public static void orderPizza(String size, String... toppings) {
+        System.out.println("\nYour Pizza Order:");
+        System.out.println("Size: " + size);
+        System.out.println("Toppings:");
+        for (String topping : toppings) {
+            System.out.println("- " + topping);
+        }
+        System.out.println("Order placed successfully!");
+    }
+}

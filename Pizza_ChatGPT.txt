@@ -1,0 +1,60 @@
+// using Variable Arguments
+
+import java.util.Scanner;
+
+public class PizzaOrderVarargs {
+    public static void orderPizza(String size, String... toppings) {
+        System.out.println("Pizza Size: " + size);
+        System.out.println("Toppings:");
+        if (toppings.length == 0) {
+            System.out.println("No toppings selected.");
+        } else {
+            for (String topping : toppings) {
+                System.out.println("- " + topping);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter pizza size (Small/Medium/Large): ");
+        String size = sc.nextLine();
+
+        System.out.print("Enter toppings (comma separated): ");
+        String toppingLine = sc.nextLine();
+
+        String[] toppings = toppingLine.split(",");
+
+        // Trim any extra spaces
+        for (int i = 0; i < toppings.length; i++) {
+            toppings[i] = toppings[i].trim();
+        }
+
+        orderPizza(size, toppings);
+    }
+}
+
+
+// Command-Line Arguments
+
+public class PizzaOrderCmd {
+    public static void main(String[] args) {
+        if (args.length < 1) {
+            System.out.println("Usage: java PizzaOrderCmd <size> [topping1 topping2 ...]");
+            return;
+        }
+
+        String size = args[0];
+        System.out.println("Pizza Size: " + size);
+
+        System.out.println("Toppings:");
+        if (args.length == 1) {
+            System.out.println("No toppings selected.");
+        } else {
+            for (int i = 1; i < args.length; i++) {
+                System.out.println("- " + args[i]);
+            }
+        }
+    }
+}
