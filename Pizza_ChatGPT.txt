@@ -27,9 +27,9 @@ public class PizzaOrderVarargs {
         String[] toppings = toppingLine.split(",");
 
         // Trim any extra spaces
-        for (int i = 0; i < toppings.length; i++) {
-            toppings[i] = toppings[i].trim();
-        }
+        //for (int i = 0; i < toppings.length; i++) {
+        //    toppings[i] = toppings[i].trim();
+       // }
 
         orderPizza(size, toppings);
     }
