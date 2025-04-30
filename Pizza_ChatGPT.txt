@@ -40,10 +40,6 @@ public class PizzaOrderVarargs {
 
 public class PizzaOrderCmd {
     public static void main(String[] args) {
-        if (args.length < 1) {
-            System.out.println("Usage: java PizzaOrderCmd <size> [topping1 topping2 ...]");
-            return;
-        }
 
         String size = args[0];
         System.out.println("Pizza Size: " + size);
