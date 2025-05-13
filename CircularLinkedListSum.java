@@ -38,12 +38,27 @@ public class CircularLinkedListSum {
         int sum = 0;
         Node temp = head;
         do {
-            if (temp.data % 2 == 0)
+            if (temp.data % 2 == 0) {
                 sum += temp.data;
+            }
             temp = temp.next;
         } while (temp != head);
 
-        System.out.println("Sum of even numbers: " + sum);
+        System.out.println("\n\nSum of even numbers: " + sum);
+    }
+
+    void display() {
+        if (head == null) {
+            System.out.print("List is empty");
+            return;
+        }
+
+        System.out.println("\nThe List: ");
+        Node temp = head;
+        do {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        } while (temp != head);
     }
 
     public static void main(String[] args) {
@@ -51,18 +66,22 @@ public class CircularLinkedListSum {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter the number of nodes in the linked list");
+        System.out.print("\nEnter the number of nodes in the linked list: ");
         int num = sc.nextInt();
+
         if (num <= 0) {
             System.out.println("Enter a valid size for linked list");
             sc.close();
             return;
         }
-        System.out.println("Enter the nodes in the linked list");
+
+        System.out.println("\nEnter the nodes in the linked list: ");
         for (int i = 0; i < num; i++) {
+            System.out.print("Enter node " + (i + 1) + ": ");
             int val = sc.nextInt();
             list.insert(val);
         }
+        list.display();
         list.sumOfEven();
         sc.close();
     }
